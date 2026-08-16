@@ -2,11 +2,29 @@
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    detectDevice();
     initializeCardAnimations();
     initializeImageLoading();
     initializeCardInteractions();
     initializeScrollEffects();
 });
+
+function detectDevice() {
+    const width = window.innerWidth;
+    const body = document.body;
+
+    body.classList.remove('device-phone', 'device-tablet', 'device-pc');
+
+    if (width <= 600) {
+        body.classList.add('device-phone');
+    } else if (width <= 1024) {
+        body.classList.add('device-tablet');
+    } else {
+        body.classList.add('device-pc');
+    }
+}
+
+window.addEventListener('resize', detectDevice);
 
 // ==================== Card Animations ====================
 function initializeCardAnimations() {
@@ -577,3 +595,4 @@ window.AnimeShowcase = {
         console.groupEnd();
     }
 };
+
