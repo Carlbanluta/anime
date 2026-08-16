@@ -274,9 +274,11 @@ p {
     letter-spacing: 0.3px;
     transition: all 0.3s ease;
     position: relative;
-    display: flex;
+    display: block;
     align-items: center;
     line-height: 1.5;
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 p::before {
@@ -401,10 +403,12 @@ td:nth-child(5) div::before {
     table {
         gap: 30px;
         grid-template-columns: 1fr;
+        width: 100%;
     }
 
     td {
         max-width: 100%;
+        width: 100%;
     }
 
     img {
@@ -414,6 +418,8 @@ td:nth-child(5) div::before {
     p {
         padding: 15px 20px;
         font-size: 15px;
+        word-break: break-word;
+        overflow-wrap: anywhere;
     }
 
     div:not(.container):not(.header):not(.cards-wrapper) {
@@ -432,7 +438,7 @@ td:nth-child(5) div::before {
     }
 
     .container {
-        width: 100%;
+        width: calc(100vw - 24px);
         max-width: 620px;
         margin: 0 auto;
         padding: 28px 16px;
