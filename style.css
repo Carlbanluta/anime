@@ -19,6 +19,18 @@ body {
     position: relative;
 }
 
+body.device-phone {
+    padding: 20px 12px 40px;
+}
+
+body.device-tablet {
+    padding: 28px 18px;
+}
+
+body.device-pc {
+    padding: 40px 20px;
+}
+
 body::before {
     content: '';
     position: fixed;
@@ -26,7 +38,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(7, 12, 25, 0.45);
+    background: rgba(0, 0, 0, 0.3);
     pointer-events: none;
     z-index: 0;
 }
@@ -34,13 +46,13 @@ body::before {
 .container {
     width: 100%;
     max-width: 1500px;
-    background: rgba(8, 15, 30, 0.72);
-    backdrop-filter: blur(14px);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
     border-radius: 40px;
     padding: 60px 40px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25),
-                inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    border: 2px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     animation: containerSlideIn 0.8s ease-out;
     position: relative;
     z-index: 1;
@@ -99,15 +111,15 @@ body::before {
 }
 
 .header h1 {
-    font-size: clamp(2.3rem, 4vw, 4rem);
+    font-size: 48px;
     font-weight: 800;
-    background: linear-gradient(135deg, #ff8a80, #ffd166, #ffe082);
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     letter-spacing: 2px;
     margin-bottom: 12px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: relative;
     word-spacing: 2px;
 }
@@ -115,22 +127,22 @@ body::before {
 .header h1::before {
     content: '✨';
     margin-right: 15px;
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    font-size: 40px;
 }
 
 .header h1::after {
     content: '✨';
     margin-left: 15px;
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    font-size: 40px;
 }
 
 .header p {
     font-size: 18px;
-    color: rgba(255, 255, 255, 0.96);
-    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
-    opacity: 0.95;
+    opacity: 0.9;
     transition: all 0.3s ease;
 }
 
@@ -168,10 +180,10 @@ table {
     max-width: 1400px;
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    display: flex;
     justify-content: center;
-    gap: 40px;
+    flex-wrap: wrap;
+    gap: 50px;
 }
 
 tr {
@@ -182,7 +194,6 @@ td {
     padding: 0;
     width: 100%;
     max-width: 400px;
-    justify-self: center;
 }
 
 div:not(.container):not(.header):not(.cards-wrapper) {
@@ -379,88 +390,72 @@ td:nth-child(5) div::before {
     animation: shimmer 3s ease-in-out 1.7s infinite;
 }
 
-@media (max-width: 768px) {
-    body {
-        overflow-x: hidden;
-        overflow-y: auto;
-        display: block;
-        padding: 24px 16px 48px;
-    }
-
-    .container {
-        padding: 40px 20px;
-        border-radius: 20px;
-    }
-
-    .header h1 {
-        font-size: clamp(2rem, 8vw, 2.8rem);
-    }
-
-    .header p {
-        font-size: 16px;
-    }
-
-    table {
-        gap: 30px;
-        grid-template-columns: 1fr;
-        width: 100%;
-    }
-
-    td {
-        max-width: 100%;
-        width: 100%;
-    }
-
-    img {
-        height: 280px;
-    }
-
-    p {
-        padding: 15px 20px;
-        font-size: 15px;
-        word-break: break-word;
-        overflow-wrap: anywhere;
-    }
-
-    div:not(.container):not(.header):not(.cards-wrapper) {
-        border-radius: 20px;
-    }
-
-    div:not(.container):not(.header):not(.cards-wrapper):hover {
-        transform: translateY(-15px) scale(1.02);
-    }
+body.device-phone .container {
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    border-radius: 20px;
 }
 
-@media (orientation: portrait) {
-    body {
-        display: block;
-        padding: 20px 14px 40px;
-    }
+body.device-phone .header h1 {
+    font-size: 36px;
+}
 
-    .container {
-        width: calc(100vw - 24px);
-        max-width: 620px;
-        margin: 0 auto;
-        padding: 28px 16px;
-    }
+body.device-phone .header p {
+    font-size: 16px;
+}
 
-    .header {
-        margin-bottom: 28px;
-    }
+body.device-phone table {
+    gap: 30px;
+    width: 100%;
+}
 
-    table {
-        grid-template-columns: 1fr;
-        gap: 22px;
-    }
+body.device-phone td {
+    max-width: 100%;
+}
 
-    td {
-        width: 100%;
-        max-width: 100%;
-    }
+body.device-phone img {
+    height: 280px;
+}
 
-    img {
-        height: 260px;
-    }
+body.device-phone p {
+    padding: 15px 20px;
+    font-size: 15px;
+}
+
+body.device-phone div:not(.container):not(.header):not(.cards-wrapper) {
+    border-radius: 20px;
+}
+
+body.device-phone div:not(.container):not(.header):not(.cards-wrapper):hover {
+    transform: translateY(-15px) scale(1.02);
+}
+
+body.device-tablet .container {
+    max-width: 1000px;
+    padding: 48px 28px;
+}
+
+body.device-tablet table {
+    gap: 32px;
+}
+
+body.device-tablet td {
+    max-width: 320px;
+}
+
+body.device-pc .container {
+    max-width: 1500px;
+    padding: 60px 40px;
+}
+
+body.device-pc table {
+    gap: 50px;
+}
+
+body.device-pc td {
+    max-width: 400px;
 }
 
 /* ==================== JavaScript Interactive Styles ==================== */
